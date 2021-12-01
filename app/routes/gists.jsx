@@ -7,7 +7,7 @@ import logo from "../images/logo.svg";
 import mobileLogo from "../images/mobile-logo.svg";
 
 export function loader() {
-  return const res = fetch(
+  let res = fetch(
     "https://old.northfloridachiropracticphysicaltherapy.com/graphql",
     {
       method: "POST",
@@ -36,8 +36,9 @@ export function loader() {
       }),
     }
   )
-    // .then((res) => res.json())
+    .then((res) => res.json())
     .then((result) => result);
+  return res;
 }
 
 const Menu = ({ item, handleSetMobileOpen }) => {
@@ -51,9 +52,9 @@ const Menu = ({ item, handleSetMobileOpen }) => {
   const primaryMenu = (
     <li ref={ref}>
       {!isDropdownButton ? (
-        <Link to={item.path}>
-          <span className="link">{item.label}</span>
-        </Link>
+        <a href={item.path} className="link">
+          {item.label}
+        </a>
       ) : (
         <button
           className="link"
@@ -71,14 +72,13 @@ const Menu = ({ item, handleSetMobileOpen }) => {
           {item.childItems.nodes.map((item) => {
             return (
               <li key={item.id} className="dropdown-item">
-                <Link to={item.path}>
-                  <span
-                    onPointerUp={() => handleSetMobileOpen(false)}
-                    className="link"
-                  >
-                    {item.label}
-                  </span>
-                </Link>
+                <a
+                  href={item.path}
+                  onPointerUp={() => handleSetMobileOpen(false)}
+                  className="link"
+                >
+                  {item.label}
+                </a>
               </li>
             );
           })}
@@ -101,7 +101,7 @@ const Menu = ({ item, handleSetMobileOpen }) => {
         .link {
           border-right: 1px solid white;
         }
-        .link span {
+        .link a {
           color: white;
         }
         .dropdown {
@@ -132,16 +132,11 @@ const Menu = ({ item, handleSetMobileOpen }) => {
   return <>{primaryMenu}</>;
 };
 
-export default function Header() {
-  let menuItems = useLoaderData();
+export default function NFCPTroute() {
+  let menuItems = useLoaderData().data.menuItems.nodes;
   const [mobileOpen, setMobileOpen] = useState(false);
   const handleSetMobileOpen = (val) => setMobileOpen(val);
-  // console.log("menuItems: ", menuItems);
-
-  const data = useLoaderData();
-
-  console.log(data);
-
+  console.log("menuItems: ", menuItems);
   return (
     <>
       <span className="hidden">Open main menu</span>
@@ -169,13 +164,13 @@ export default function Header() {
           </div>
           <div>
             <ul className="menu">
-              {/* {menuItems.map((item) => (
+              {menuItems.map((item) => (
                 <Menu
                   handleSetMobileOpen={handleSetMobileOpen}
                   key={item.id}
                   item={item}
                 />
-              ))} */}
+              ))}
             </ul>
           </div>
           <div className="link">

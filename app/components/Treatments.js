@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import { useQuery, gql } from "@apollo/client";
 import styles from "./treatments.module.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -14,7 +13,7 @@ import SwiperCore, { Autoplay, Pagination } from "swiper";
 // install Swiper modules
 SwiperCore.use([Autoplay, Pagination]);
 
-const DISORDERS = gql`
+const DISORDERS = `
   query GetDisorders {
     nfcptSettings {
       nfcptSettings {
@@ -33,10 +32,6 @@ const DISORDERS = gql`
 `;
 
 const Treatments = () => {
-  const { loading, error, data } = useQuery(DISORDERS);
-  if (loading) return <div className="loader"></div>;
-
-  if (error) return <p>Error: {error.message} </p>;
   const disorders = data.nfcptSettings.nfcptSettings.disorders;
 
   return (

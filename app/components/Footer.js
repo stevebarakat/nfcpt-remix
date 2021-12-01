@@ -1,4 +1,3 @@
-import { useQuery, gql } from "@apollo/client";
 import styles from "./footer.module.css";
 import {
   FaTwitterSquare,
@@ -8,7 +7,7 @@ import {
 import { SiGooglemybusiness } from "react-icons/si";
 import Button from "./Button";
 
-const FOOTER = gql`
+const FOOTER = `
   query getFooterValues {
     menus(where: { slug: "info" }) {
       edges {
@@ -50,17 +49,12 @@ const FOOTER = gql`
 `;
 
 const Footer = () => {
-  const { loading, error, data } = useQuery(FOOTER);
-
   const officeHours = data?.nfcptSettings.nfcptSettings.officeHours;
   const hours = officeHours?.map((item, i) => (
     <li key={i}>
       {item.day.dayOfWeek}: {item.day.opens} - {item.day.closes}
     </li>
   ));
-
-  if (loading) return <div className="loader"></div>;
-  if (error) return <p>Error: {error.message} </p>;
 
   const contactInfo = data.nfcptSettings.nfcptSettings.contactInfo;
 

@@ -11,9 +11,6 @@ import {
 
 import Layout from "./components/Layout";
 
-import { ApolloProvider } from "@apollo/client";
-import { client } from "./lib/apollo";
-
 import globalStylesUrl from "~/styles/global.css";
 import swiperStylesUrl from "~/styles/swiper.custom.css";
 import variablesUrl from "~/styles/variables.css";
@@ -35,13 +32,11 @@ export const links = () => {
 // https://remix.run/api/conventions#route-filenames
 export default function App() {
   return (
-    <ApolloProvider client={client}>
-      <Document>
-        <Layout>
-          <Outlet />
-        </Layout>
-      </Document>
-    </ApolloProvider>
+    <Document>
+      <Layout>
+        <Outlet />
+      </Layout>
+    </Document>
   );
 }
 

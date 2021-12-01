@@ -3,9 +3,8 @@ import { buildUrl } from "cloudinary-build-url";
 import Image from "next/image";
 import coupon from "../images/new-patient-vertical.svg";
 import ClaimOfferForm from "./ClaimOfferForm";
-import { gql, useQuery } from "@apollo/client";
 
-const TESTIMONIALS = gql`
+const TESTIMONIALS = `
   query GetTestimonials {
     nfcptSettings {
       nfcptSettings {
@@ -26,8 +25,6 @@ const TESTIMONIALS = gql`
 `;
 
 const Sidebar = () => {
-  const { loading, error, data } = useQuery(TESTIMONIALS);
-
   function randomNumber(min = 0, max = 1) {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
@@ -49,9 +46,6 @@ const Sidebar = () => {
   const testimonialAuthor =
     data?.nfcptSettings.nfcptSettings.testimonials[n].testimonial
       .testimonialAuthor;
-
-  if (loading) return <div className="loader"></div>;
-  if (error) return <p>Error: {error.message}</p>;
 
   const urlPixelated = buildUrl(testimonialPhotoSlug, {
     cloud: {
