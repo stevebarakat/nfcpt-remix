@@ -1,4 +1,4 @@
-.nav {
+/* .nav {
   display: flex;
   justify-content: space-between;
   background: var(--darkColor);
@@ -42,7 +42,7 @@
   border-right: 1px solid white;
   text-align: left;
 }
-.link a {
+.link [href] {
   text-decoration: none;
   color: white;
   font-weight: bold;
@@ -78,4 +78,4 @@
     background: var(--darkColor);
     display: block;
   }
-}
+} */

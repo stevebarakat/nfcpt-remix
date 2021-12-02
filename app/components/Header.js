@@ -22,8 +22,8 @@ const Menu = ({ item, handleSetMobileOpen }) => {
   const primaryMenu = (
     <li ref={ref}>
       {!isDropdownButton ? (
-        <Link to={item.path}>
-          <div className="link">{item.label}</div>
+        <Link to={item.path} className="link">
+          {item.label}
         </Link>
       ) : (
         <button
@@ -42,13 +42,12 @@ const Menu = ({ item, handleSetMobileOpen }) => {
           {item.childItems.nodes.map((item) => {
             return (
               <li key={item.id} className="dropdown-item">
-                <Link to={item.path}>
-                  <div
-                    onPointerUp={() => handleSetMobileOpen(false)}
-                    className="link"
-                  >
-                    {item.label}
-                  </div>
+                <Link
+                  to={item.path}
+                  className="link"
+                  onPointerUp={() => handleSetMobileOpen(false)}
+                >
+                  {item.label}
                 </Link>
               </li>
             );
