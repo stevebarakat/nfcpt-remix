@@ -65,7 +65,7 @@ export default function Header({ menuItems }) {
 
   return (
     <>
-      <span className="hidden">Open main menu</span>
+      <span className="sr-only">Open main menu</span>
       <div
         className="toggle-mobile-btn"
         onPointerUp={() => setMobileOpen((mobileOpen) => !mobileOpen)}
@@ -100,7 +100,7 @@ export default function Header({ menuItems }) {
                 ))}
             </ul>
           </div>
-          <div className="link">
+          <div className="phone">
             <a href="tel:904-272-4329">(904) 277-4686</a>
           </div>
         </div>

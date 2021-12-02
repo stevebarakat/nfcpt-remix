@@ -29,19 +29,7 @@
 .dropdown-item {
   border-bottom: 1px solid white;
 }
-@media (max-width: 875px) {
-  .link {
-    border-bottom: 1px solid white;
-    border-right: none;
-  }
-  .dropdown {
-    position: relative;
-    border: none;
-  }
-  .dropdown-item {
-    border-bottom: none;
-  }
-}
+
 .nav {
   display: flex;
   justify-content: space-between;
@@ -74,22 +62,7 @@
 .logo {
   padding-top: 0.5rem;
 }
-.link {
-  background: none;
-  border: none;
-  font-size: inherit;
-  font-family: inherit;
-  color: white;
-  text-decoration: none;
-  padding: 1rem;
-  line-height: 2.5;
-  text-align: left;
-}
-.link a {
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
-}
+
 @media (max-width: 875px) {
   .link {
     border-bottom: 1px solid white;
@@ -121,3 +94,15 @@
     background: var(--darkColor);
     display: block;
   }
+  .link {
+    border-bottom: 1px solid white;
+    border-right: none;
+  }
+  .dropdown {
+    position: relative;
+    border: none;
+  }
+  .dropdown-item {
+    border-bottom: none;
+  }
+}
