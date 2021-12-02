@@ -15,11 +15,11 @@ const Footer = ({ data }) => {
     </li>
   ));
 
-  const contactInfo = data.nfcptSettings.nfcptSettings.contactInfo;
+  const contactInfo = data?.nfcptSettings.nfcptSettings.contactInfo;
 
-  const infoMenu = data.menus.edges[0].node;
-  const infoMenuNodes = infoMenu.menuItems.nodes;
-  const infoMenuItems = infoMenuNodes.map((item) => (
+  const infoMenu = data?.menus.edges[0].node;
+  const infoMenuNodes = infoMenu?.menuItems.nodes;
+  const infoMenuItems = infoMenuNodes?.map((item) => (
     <li key={item.url}>
       <a href={item.url}>{item.label}</a>
     </li>
@@ -73,7 +73,7 @@ const Footer = ({ data }) => {
             <ul>{hours}</ul>
           </div>
           <div>
-            <p className="h4">{infoMenu.name}</p>
+            <p className="h4">{infoMenu?.name}</p>
             <ul>{infoMenuItems}</ul>
           </div>
           <div>
@@ -122,13 +122,13 @@ const Footer = ({ data }) => {
           <div>
             <p className="h4">Contact Info</p>
             <ul>
-              <li className="bold">{contactInfo.businessName}</li>
-              <li>{contactInfo.address}</li>
-              <li>{contactInfo.cityStateZip}</li>
+              <li className="bold">{contactInfo?.businessName}</li>
+              <li>{contactInfo?.address}</li>
+              <li>{contactInfo?.cityStateZip}</li>
               <li>
-                Tel: <a href="tel: 9042724329">{contactInfo.phone}</a>
+                Tel: <a href="tel: 9042724329">{contactInfo?.phone}</a>
               </li>
-              <li>Fax: {contactInfo.fax}</li>
+              <li>Fax: {contactInfo?.fax}</li>
             </ul>
           </div>
         </div>

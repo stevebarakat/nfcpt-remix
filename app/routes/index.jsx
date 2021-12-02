@@ -1,5 +1,6 @@
 import { useLoaderData, Link } from "remix";
 import Hero from "../components/Hero";
+import Cta from "../components/Cta";
 import styles from "../styles/index.css";
 
 export let meta = () => {
@@ -51,7 +52,14 @@ export function loader() {
 }
 
 export default function Index() {
-  let home = useLoaderData().data.pageBy;
-  console.log(home);
-  return <Hero home={home} />;
+  let homepageData = useLoaderData().data.pageBy;
+  return (
+    <>
+      <Hero homepageData={homepageData} />
+      <Cta />
+      {/* <Mission />
+      <Treatments />
+      <Blocks /> */}
+    </>
+  );
 }
