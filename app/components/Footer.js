@@ -26,19 +26,17 @@ const Footer = ({ data }) => {
   ));
 
   return (
-    <footer className={styles.footer}>
+    <footer className="footer">
       <div className="container">
-        <div className={styles.upperFooter}>
+        <div className="upperFooter">
           <div>
-            <span className={styles.headline}>
-              Get The Settlement You Deserve.
-            </span>
-            <span className={styles.description}>
+            <span className="headline">Get The Settlement You Deserve.</span>
+            <span className="description">
               We work closely with attorneys to ensure you get the settlement
               you deserve.
             </span>
           </div>
-          <div className={styles.btnWrap}>
+          <div className="btnWrap">
             <div className="flex">
               <div
                 style={{
@@ -69,24 +67,24 @@ const Footer = ({ data }) => {
             </div>
           </div>
         </div>
-        <div className={styles.innerFooter}>
+        <div className="innerFooter">
           <div>
-            <p className={styles.h4}>Office Hours</p>
+            <p className="h4">Office Hours</p>
             <ul>{hours}</ul>
           </div>
           <div>
-            <p className={styles.h4}>{infoMenu.name}</p>
+            <p className="h4">{infoMenu.name}</p>
             <ul>{infoMenuItems}</ul>
           </div>
           <div>
-            <p className={styles.h4}>Connect</p>
+            <p className="h4">Connect</p>
             <ul>
               <li>
                 <a
-                  className={styles.social}
+                  className="social"
                   href="https://www.google.com/search?q=North+Florida+Chiropractic+Physical+Therapy#lpstate=pid:-1"
                 >
-                  <span className={styles.icon}>
+                  <span className="icon">
                     <SiGooglemybusiness />
                   </span>
                   <span>Google</span>
@@ -94,29 +92,26 @@ const Footer = ({ data }) => {
               </li>
               <li>
                 <a
-                  className={styles.social}
+                  className="social"
                   href="https://www.facebook.com/northfloridachiropracticphysicaltherapy/"
                 >
-                  <span className={styles.icon}>
+                  <span className="icon">
                     <FaFacebookSquare />
                   </span>
                   <span>Facebook</span>
                 </a>
               </li>
               <li>
-                <a className={styles.social} href="#yt">
-                  <span className={styles.icon}>
+                <a className="social" href="https://youtube.com">
+                  <span className="icon">
                     <FaYoutubeSquare />
                   </span>
                   <span>YouTube</span>
                 </a>
               </li>
               <li>
-                <a
-                  className={styles.social}
-                  href="https://twitter.com/NFLChiro"
-                >
-                  <span className={styles.icon}>
+                <a className="social" href="https://twitter.com/NFLChiro">
+                  <span className="icon">
                     <FaTwitterSquare />
                   </span>
                   <span>Twitter</span>
@@ -125,7 +120,7 @@ const Footer = ({ data }) => {
             </ul>
           </div>
           <div>
-            <p className={styles.h4}>Contact Info</p>
+            <p className="h4">Contact Info</p>
             <ul>
               <li className="bold">{contactInfo.businessName}</li>
               <li>{contactInfo.address}</li>
@@ -137,12 +132,12 @@ const Footer = ({ data }) => {
             </ul>
           </div>
         </div>
-        <div className={styles.colophon}>
+        <div className="colophon">
           <div>
             &copy;2021{" "}
             <a href="/">North Florida Chiropractic Physical Therapy</a>
           </div>
-          <div className={styles.credits}>
+          <div className="credits">
             Site by <a href="https://stevebarakat.com">S.Barakat</a>
           </div>
         </div>
