@@ -1,12 +1,20 @@
 .hero {
-  min-height: 750px;
-  /* min-height: 100vh; */
+  /* min-height: 750px; */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
   position: relative;
   margin-bottom: -6.5rem;
+}
+
+.heroContainer {
+  position: relative;
+  width: 1350px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
 .headline {
@@ -43,8 +51,7 @@
     display: none;
   }
   .hero {
-    min-height: calc(100vh - 2.5rem);
-    margin-bottom: 2rem;
+    min-height: 100vh;
   }
 }
 

@@ -8,22 +8,24 @@ const Hero = ({ home }) => {
   console.log("home: ", home);
   return (
     <section
-      style={{ background: `url(${home?.featuredImage?.node.sourceUrl})` }}
-      className="heroContainer"
+      style={{
+        background: `url(${home?.featuredImage?.node.sourceUrl}) no-repeat`,
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundAttachment: "fixed",
+      }}
     >
       <div className="hero">
-        <span className="headline">{home?.featuredImage?.node.title}</span>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: home?.featuredImage?.node.caption,
-          }}
-          className="description"
-        ></div>
+        <div className="heroContainer">
+          <span className="headline">{home?.featuredImage?.node.title}</span>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: home?.featuredImage?.node.caption,
+            }}
+            className="description"
+          ></div>
+        </div>
       </div>
-      {/* <img
-        src={home?.featuredImage?.node.sourceUrl}
-        alt={home?.featuredImage?.node.altText}
-      /> */}
     </section>
   );
 };

@@ -11,11 +11,19 @@
   text-align: left;
   border-right: 1px solid var(--grey10);
   display: flex;
+  align-items: center;
 }
-.link.phone {
-  border-right: none;
+.phone a {
   font-weight: bold;
+  color: var(--grey10);
+  text-decoration: none;
+  font-size: 1.25rem;
 }
+
+.phone a:hover {
+  text-decoration: underline;
+}
+
 .link a {
   text-decoration: none;
   color: white;
