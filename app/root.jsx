@@ -10,30 +10,70 @@ import {
 } from "remix";
 
 import Layout from "./components/Layout";
+import { useLoaderData } from "remix";
 
 import globalStylesUrl from "~/styles/global.css";
 import swiperStylesUrl from "~/styles/swiper.custom.css";
 import variablesUrl from "~/styles/variables.css";
+import headerUrl from "~/styles/header.css";
 
 // https://remix.run/api/app#links
 export const links = () => {
   return [
+    {
+      rel: "stylesheet",
+      href: "https://meyerweb.com/eric/tools/css/reset/reset.css",
+    },
     { rel: "stylesheet", href: globalStylesUrl },
     { rel: "stylesheet", href: swiperStylesUrl },
     { rel: "stylesheet", href: variablesUrl },
-    {
-      rel: "stylesheet",
-      href: "https://unpkg.com/modern-css-reset@1.4.0/dist/reset.min.css",
-    },
+    { rel: "stylesheet", href: headerUrl },
   ];
 };
+
+export function loader() {
+  const data = fetch(
+    "https://old.northfloridachiropracticphysicaltherapy.com/graphql",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query: `
+          query GetPrimaryMenu {
+            menuItems(where: { location: PRIMARY, parentId: "null" }) {
+              nodes {
+                path
+                label
+                id
+                childItems {
+                  nodes {
+                    id
+                    path
+                    label
+                  }
+                }
+              }
+            }
+          }
+        `,
+      }),
+    }
+  )
+    .then((res) => res.json())
+    .then((result) => result);
+  return data;
+}
 
 // https://remix.run/api/conventions#default-export
 // https://remix.run/api/conventions#route-filenames
 export default function App() {
+  let menuItems = useLoaderData().data.menuItems.nodes;
+  console.log(menuItems);
   return (
     <Document>
-      <Layout>
+      <Layout menuItems={menuItems}>
         <Outlet />
       </Layout>
     </Document>

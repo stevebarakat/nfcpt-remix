@@ -1,11 +1,11 @@
 // import loadable from "@loadable/component";
-import Header from "../components/Header";
+import Header from "./Header";
 // import Footer from "../components/Footer";
 // const Footer = loadable(() => import("./Footer"));
 
-const Layout = ({ children }) => (
+const Layout = ({ children, menuItems }) => (
   <>
-    <Header />
+    <Header menuItems={menuItems} />
     {children}
     {/* <Footer /> */}
   </>

@@ -1,44 +1,15 @@
 import { useState, useRef } from "react";
-import { useLoaderData } from "remix";
+import { Link } from "remix";
 import useOnClickOutside from "../hooks/useOnClickOutside";
 import Hamburger from "hamburger-react";
 import { FaCaretDown } from "react-icons/fa";
 import logo from "../images/logo.svg";
 import mobileLogo from "../images/mobile-logo.svg";
+// import styles from "./header.css";
 
-export function loader() {
-  return const res = fetch(
-    "https://old.northfloridachiropracticphysicaltherapy.com/graphql",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        query: `
-          query GetPrimaryMenu {
-            menuItems(where: { location: PRIMARY, parentId: "null" }) {
-              nodes {
-                path
-                label
-                id
-                childItems {
-                  nodes {
-                    id
-                    path
-                    label
-                  }
-                }
-              }
-            }
-          }
-        `,
-      }),
-    }
-  )
-    // .then((res) => res.json())
-    .then((result) => result);
-}
+// export function links() {
+//   return [{ rel: "stylesheet", href: styles }];
+// }
 
 const Menu = ({ item, handleSetMobileOpen }) => {
   const ref = useRef();
@@ -52,7 +23,7 @@ const Menu = ({ item, handleSetMobileOpen }) => {
     <li ref={ref}>
       {!isDropdownButton ? (
         <Link to={item.path}>
-          <span className="link">{item.label}</span>
+          <div className="link">{item.label}</div>
         </Link>
       ) : (
         <button
@@ -72,75 +43,26 @@ const Menu = ({ item, handleSetMobileOpen }) => {
             return (
               <li key={item.id} className="dropdown-item">
                 <Link to={item.path}>
-                  <span
+                  <div
                     onPointerUp={() => handleSetMobileOpen(false)}
                     className="link"
                   >
                     {item.label}
-                  </span>
+                  </div>
                 </Link>
               </li>
             );
           })}
         </ul>
       )}
-      <style>{`
-        .link {
-          background: none;
-          border: none;
-          font-size: inherit;
-          font-family: inherit;
-          color: white;
-          text-decoration: none;
-          display: block;
-          width: 100%;
-          padding: 1rem;
-          line-height: 2.5;
-          text-align: left;
-        }
-        .link {
-          border-right: 1px solid white;
-        }
-        .link span {
-          color: white;
-        }
-        .dropdown {
-          background: var(--darkColor);
-          position: absolute;
-          border-top: 1px solid white;
-          border-left: 1px solid white;
-        }
-        .dropdown-item {
-          border-bottom: 1px solid white;
-        }
-        @media (max-width: 875px) {
-          .link {
-            border-bottom: 1px solid white;
-            border-right: none;
-          }
-          .dropdown {
-            position: relative;
-            border: none;
-          }
-          .dropdown-item {
-            border-bottom: none;
-          }
-        }
-      `}</style>
     </li>
   );
   return <>{primaryMenu}</>;
 };
 
-export default function Header() {
-  let menuItems = useLoaderData();
+export default function Header({ menuItems }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const handleSetMobileOpen = (val) => setMobileOpen(val);
-  // console.log("menuItems: ", menuItems);
-
-  const data = useLoaderData();
-
-  console.log(data);
 
   return (
     <>
@@ -169,13 +91,14 @@ export default function Header() {
           </div>
           <div>
             <ul className="menu">
-              {/* {menuItems.map((item) => (
-                <Menu
-                  handleSetMobileOpen={handleSetMobileOpen}
-                  key={item.id}
-                  item={item}
-                />
-              ))} */}
+              {menuItems &&
+                menuItems.map((item) => (
+                  <Menu
+                    handleSetMobileOpen={handleSetMobileOpen}
+                    key={item.id}
+                    item={item}
+                  />
+                ))}
             </ul>
           </div>
           <div className="link">
@@ -190,88 +113,6 @@ export default function Header() {
           alt="North Florida Chiropractic Physical Therapy"
         />
       </a>
-      <style>{`
-        .nav {
-          display: flex;
-          justify-content: space-between;
-          background: var(--darkColor);
-          width: 100%;
-          z-index: 20;
-          position: absolute;
-          border-top: 1px solid white;
-          border-bottom: 1px solid white;
-          transition: transform 0.25s;
-          font-size: 1.25rem;
-          padding-left: 0.5rem;
-        }
-        .nav-container {
-          display: flex;
-          max-width: 100%;
-          width: 1350px;
-          justify-content: space-between;
-          margin: 0 auto;
-          align-items: center;
-        }
-        .menu {
-          display: flex;
-          justify-content: center;
-          border-left: 1px solid white;
-        }
-        .toggle-mobile-btn {
-          display: none;
-        }
-        .logo {
-          padding-top: 0.5rem;
-        }
-        .link {
-          background: none;
-          border: none;
-          font-size: inherit;
-          font-family: inherit;
-          color: white;
-          text-decoration: none;
-          padding: 1rem;
-          line-height: 2.5;
-          text-align: left;
-        }
-        .link a {
-          text-decoration: none;
-          color: white;
-          font-weight: bold;
-        }
-        @media (max-width: 875px) {
-          .link {
-            border-bottom: 1px solid white;
-          }
-          .nav {
-            z-index: 99;
-            position: fixed;
-            flex-direction: column;
-            min-height: 100vh;
-            transform: var(--toggleMobile);
-            text-align: left;
-            justify-content: flex-start;
-          }
-          .nav-container {
-            display: block;
-          }
-          .menu {
-            flex-direction: column;
-            border-left: none;
-            border-top: 1px solid white;
-          }
-          .toggle-mobile-btn {
-            color: white;
-            z-index: 55555;
-            margin: 1rem;
-            position: fixed;
-            right: 0;
-            border: none;
-            background: var(--darkColor);
-            display: block;
-          }
-        }
-      `}</style>
     </>
   );
   return null;
