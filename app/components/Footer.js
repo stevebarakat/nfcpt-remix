@@ -7,48 +7,7 @@ import {
 import { SiGooglemybusiness } from "react-icons/si";
 import Button from "./Button";
 
-const FOOTER = `
-  query getFooterValues {
-    menus(where: { slug: "info" }) {
-      edges {
-        node {
-          name
-          menuItems {
-            nodes {
-              label
-              url
-            }
-          }
-        }
-      }
-    }
-    nfcptSettings {
-      nfcptSettings {
-        officeHours {
-          day {
-            closes
-            dayOfWeek
-            opens
-          }
-        }
-        socialMedia {
-          facebook
-          google
-          twitter
-        }
-        contactInfo {
-          address
-          businessName
-          cityStateZip
-          fax
-          phone
-        }
-      }
-    }
-  }
-`;
-
-const Footer = () => {
+const Footer = ({ data }) => {
   const officeHours = data?.nfcptSettings.nfcptSettings.officeHours;
   const hours = officeHours?.map((item, i) => (
     <li key={i}>

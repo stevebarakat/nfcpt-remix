@@ -41,7 +41,43 @@ export function loader() {
       },
       body: JSON.stringify({
         query: `
-          query GetPrimaryMenu {
+          query GetPrimaryData {
+            menus(where: { slug: "info" }) {
+              edges {
+                node {
+                  name
+                  menuItems {
+                    nodes {
+                      label
+                      url
+                    }
+                  }
+                }
+              }
+            }
+            nfcptSettings {
+              nfcptSettings {
+                officeHours {
+                  day {
+                    closes
+                    dayOfWeek
+                    opens
+                  }
+                }
+                socialMedia {
+                  facebook
+                  google
+                  twitter
+                }
+                contactInfo {
+                  address
+                  businessName
+                  cityStateZip
+                  fax
+                  phone
+                }
+              }
+            }
             menuItems(where: { location: PRIMARY, parentId: "null" }) {
               nodes {
                 path
@@ -69,11 +105,13 @@ export function loader() {
 // https://remix.run/api/conventions#default-export
 // https://remix.run/api/conventions#route-filenames
 export default function App() {
-  let menuItems = useLoaderData().data.menuItems.nodes;
+  const data = useLoaderData().data;
+  const menuItems = data.menuItems.nodes;
   console.log(menuItems);
+
   return (
     <Document>
-      <Layout menuItems={menuItems}>
+      <Layout menuItems={menuItems} data={data}>
         <Outlet />
       </Layout>
     </Document>
