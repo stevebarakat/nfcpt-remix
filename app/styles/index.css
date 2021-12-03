@@ -1,3 +1,5 @@
+/* HERO UNIT */
+
 .hero {
   /* min-height: 750px; */
   min-height: 100vh;
@@ -55,51 +57,7 @@
   }
 }
 
-.card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  margin: 3rem auto;
-  color: white;
-  gap: 1rem;
-  width: fit-content;
-}
-
-.card img {
-  border-radius: 8px;
-  aspect-ratio: 1/1;
-}
-
-.cardHeader {
-  position: absolute;
-  font-size: 1rem;
-  font-weight: 800;
-  letter-spacing: -0.05rem;
-  z-index: 9;
-  bottom: 0;
-  background: hsla(324, 79%, 68%, 0.75);
-  width: 100%;
-  height: fit-content;
-  padding: 0.5rem;
-  border-radius: 0 0 8px 8px;
-}
-
-.h2 {
-  font-size: 3.25rem;
-  margin: 0 auto;
-  text-align: center;
-  font-weight: 800;
-  color: var(--grey05);
-  padding-bottom: 2rem;
-}
-
-.treatmentsWrap {
-  background: var(--primaryGradient);
-  padding: 6rem 0;
-}
+/* CALL TO ACTION */
 
 .cta {
   position: relative;
@@ -179,6 +137,301 @@
   }
 }
 
+/* MISSION */
+
+.mission {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 2rem;
+  max-width: 100%;
+  background: white;
+  border-top: 4px solid white;
+  font-family: var(--secondaryFont);
+  /* font-size: 2rem; */
+  color: var(--grey60);
+  padding: 4rem 0;
+  position: relative;
+}
+
+.mission h1 {
+  display: block;
+  font-family: var(--secondaryFont);
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.1rem;
+  text-align: center;
+  margin-top: 0;
+  padding-bottom: 1rem;
+}
+
+.mission img {
+  z-index: 0;
+}
+
+.missionLeftWrap {
+  z-index: 55;
+  max-width: 675px;
+  width: 100%;
+  padding: 2rem;
+  justify-self: center;
+  background: var(--grey025);
+  box-shadow: var(--shadow-elevation-medium);
+}
+.missionRightWrap {
+  max-width: 675px;
+  width: 100%;
+  height: 100%;
+  z-index: 55;
+  justify-self: center;
+  align-self: center;
+  border-left: none;
+  padding: 2rem;
+  text-align: center;
+  background: var(--grey025);
+  box-shadow: var(--shadow-elevation-medium);
+}
+
+.missionSubHeader {
+  padding-bottom: 1.25rem;
+  display: block;
+  font-size: 1.25rem;
+  letter-spacing: -0.05rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--primaryColor);
+}
+.missionDescription {
+  display: block;
+  line-height: clamp(1.25, 5vmin, 1.75);
+  font-size: clamp(1rem, 5vmin, 1.5rem);
+  padding: 0 2rem;
+}
+
+.missionList li {
+  padding-left: 2rem;
+  line-height: clamp(1.25, 5vmin, 1.75);
+  font-size: clamp(1rem, 5vmin, 1.5rem);
+}
+
+.missionList li:before {
+  content: url("../images/check.svg");
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  top: 0.35rem;
+  left: 0;
+  margin-left: -2rem;
+  margin-right: 0.5rem;
+}
+
+.stats {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 3rem;
+  padding-top: 4rem;
+  justify-content: center;
+  text-align: center;
+}
+.stat {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--primaryFont);
+  font-size: 3rem;
+  font-weight: 900;
+  width: fit-content;
+}
+
+.stat span:last-child {
+  text-align: center;
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+@media (min-width: 850px) {
+  .mission {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .missionHeader {
+    font-size: 2.25rem;
+    text-align: left;
+  }
+  .missionSubHeader {
+    font-size: 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .missionDescription {
+    line-height: 2.5rem;
+    font-size: 1.25rem;
+  }
+  .missionList li {
+    line-height: 2.5rem;
+    font-size: 1.25rem;
+  }
+  .missionLeftWrap {
+    justify-self: flex-end;
+    align-self: flex-start;
+    background: none;
+    box-shadow: none;
+  }
+  .missionRightWrap {
+    height: fit-content;
+    border-left: 2px solid white;
+    border-top: none;
+    justify-self: flex-start;
+    align-self: center;
+    text-align: left;
+    background: none;
+    box-shadow: none;
+  }
+  .stats {
+    justify-content: flex-start;
+    padding-top: 2rem;
+  }
+}
+
+/* TREATMENTS */
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem auto;
+  color: white;
+  gap: 1rem;
+  width: fit-content;
+}
+
+.card img {
+  border-radius: 8px;
+  aspect-ratio: 1/1;
+}
+
+.cardHeader {
+  position: absolute;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: -0.05rem;
+  z-index: 9;
+  bottom: 0;
+  background: hsla(324, 79%, 68%, 0.75);
+  width: 100%;
+  height: fit-content;
+  padding: 0.5rem;
+  border-radius: 0 0 8px 8px;
+}
+
+.h2 {
+  font-size: 3.25rem;
+  margin: 0 auto;
+  text-align: center;
+  font-weight: 800;
+  color: var(--grey05);
+  padding-bottom: 2rem;
+}
+
+.treatmentsWrap {
+  background: var(--primaryGradient);
+  padding: 6rem 0;
+}
+
+/* BLOCKS */
+
+.wrapper {
+  display: grid;
+}
+.contain {
+  max-width: 675px;
+  align-self: center;
+}
+
+.block1 figure,
+.figure {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem;
+  position: relative;
+  z-index: 5;
+}
+.block1 {
+  position: relative;
+  min-height: 550px;
+  max-width: 100%;
+  text-align: center;
+  color: white;
+}
+.block2 {
+  display: none;
+  max-width: 675px;
+  align-self: center;
+  justify-self: center;
+  color: var(--grey50);
+}
+.block3 {
+  max-width: 675px;
+  align-self: center;
+  justify-self: center;
+}
+.block4 {
+  display: none;
+  position: relative;
+  min-height: 550px;
+  max-width: 100%;
+  text-align: center;
+  color: white;
+}
+.headline p,
+.blockquote p {
+  font-size: 2rem;
+  font-weight: 700;
+}
+.headline p {
+  font-weight: 800;
+}
+.brightness {
+  position: absolute;
+  min-height: 100%;
+  width: 100%;
+  filter: brightness(0.5);
+}
+.description {
+  font-weight: 600;
+  line-height: 2;
+  padding-bottom: 1rem;
+}
+@media screen and (min-width: 850px) {
+  .wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .brightness {
+    filter: brightness(1);
+  }
+  .block1 figure {
+    visibility: hidden;
+  }
+  .block2 {
+    display: block;
+  }
+  .block4 {
+    display: block;
+  }
+  .block4 figure {
+    visibility: hidden;
+  }
+  .headline p,
+  .blockquote p {
+    font-size: 3rem;
+  }
+}
+
 /* FOOTER STYLES */
 
 .footer {
@@ -234,7 +487,7 @@
   color: white;
   margin-bottom: 1rem;
 }
-.footer .description {
+.footer.description {
   font-size: 1rem;
   display: block;
   padding-bottom: 2rem;
