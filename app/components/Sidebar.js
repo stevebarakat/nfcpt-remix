@@ -1,6 +1,5 @@
-import styles from "./sidebar.module.css";
+import styles from "./sidebar.css";
 import { buildUrl } from "cloudinary-build-url";
-import Image from "next/image";
 import coupon from "../images/new-patient-vertical.svg";
 import ClaimOfferForm from "./ClaimOfferForm";
 
@@ -59,35 +58,26 @@ const Sidebar = () => {
   });
 
   return (
-    <aside className={styles.sidebar}>
+    <aside className="sidebar">
       <div
-        className={styles.sidebarWidget}
+        className="sidebarWidget"
         style={{ background: "var(--accentGradient)" }}
       >
-        <Image quality={100} src={coupon} alt="New Patient Special" />
+        <img src={coupon} alt="New Patient Special" />
         <ClaimOfferForm />
       </div>
       <div
-        className={styles.sidebarWidget}
+        className="sidebarWidget"
         style={{ background: "var(--primaryGradient)" }}
       >
-        <div className={styles.testimonialImg}>
+        <div className="testimonialImg">
           {testimonialPhotoUrl && (
-            <Image
-              src={testimonialPhotoUrl}
-              placeholder="blur"
-              blurDataURL={urlPixelated}
-              layout="fill"
-              objectFit="cover"
-              objectPosition="center"
-              quality={100}
-              alt={testimonialPhotoAltText}
-            />
+            <img src={testimonialPhotoUrl} alt={testimonialPhotoAltText} />
           )}
         </div>
         <div>
           <blockquote>
-            <span className={styles.testimonial}>{testimonialContent}</span>
+            <span className="testimonial">{testimonialContent}</span>
           </blockquote>
           <figcaption
             style={{

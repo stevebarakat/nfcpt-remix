@@ -1,9 +1,8 @@
-import Link from "next/link";
-import Image from "next/image";
+import { Link } from "remix";
 import Button from "./Button";
-import ray from "../images/ray.webp";
-import trio from "../images/trio.webp";
-import styles from "./blocks.module.css";
+import ray from "~/images/ray.webp";
+import trio from "~/images/trio.webp";
+import styles from "~/styles/blocks.css";
 
 const Blocks = () => {
   return (
@@ -12,15 +11,7 @@ const Blocks = () => {
         {/* BLOCK 1 */}
         <div className={styles.block1}>
           <div className={styles.brightness}>
-            <Image
-              // unoptimized={true}
-              layout="fill"
-              objectFit="cover"
-              objectPosition="center"
-              placeholder="blur"
-              src={ray}
-              alt="Alex Ray"
-            />
+            <img src={ray} alt="Alex Ray" />
           </div>
           <figure>
             <blockquote className={styles.blockquote}>
@@ -65,16 +56,14 @@ const Blocks = () => {
                 We offer package deals on regular chiropractic treatments and
                 massage therapy to club members.
               </p>
-              <Link passHref href="/pricing-plans">
-                <a>
-                  <Button
-                    color="var(--accentColor)"
-                    borderColor="var(--grey05)"
-                    textColor="white"
-                  >
-                    Pricing Plans
-                  </Button>
-                </a>
+              <Link to="/pricing-plans">
+                <Button
+                  color="var(--accentColor)"
+                  borderColor="var(--grey05)"
+                  textColor="white"
+                >
+                  Pricing Plans
+                </Button>
               </Link>
             </div>
           </div>
@@ -83,15 +72,7 @@ const Blocks = () => {
         {/* BLOCK 4 */}
         <div className={styles.block4}>
           <div className="brightness">
-            <Image
-              // unoptimized={true}
-              layout="fill"
-              objectFit="cover"
-              objectPosition="center"
-              placeholder="blur"
-              src={trio}
-              alt="Trio"
-            />
+            <img src={trio} alt="three female friends" />
           </div>
         </div>
       </div>

@@ -1,44 +1,58 @@
 import React from "react";
-import Image from "next/image";
-import styles from "./treatments.module.css";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { useLoaderData } from "remix";
+import styles from "~/styles/treatments.css";
+// import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
+// import "swiper/css";
+// import "swiper/css/pagination";
 
 // import Swiper core and required modules
-import SwiperCore, { Autoplay, Pagination } from "swiper";
+// import SwiperCore, { Autoplay, Pagination } from "swiper";
 
-// install Swiper modules
-SwiperCore.use([Autoplay, Pagination]);
-
-const DISORDERS = `
-  query GetDisorders {
-    nfcptSettings {
-      nfcptSettings {
-        disorders {
-          disorder {
-            disorderName
-            disorderImageBase64
-            disorderImage {
-              sourceUrl
+export function loader() {
+  const data = fetch(
+    "https://old.northfloridachiropracticphysicaltherapy.com/graphql",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query: `
+        query GetDisorders {
+          nfcptSettings {
+            nfcptSettings {
+              disorders {
+                disorder {
+                  disorderName
+                  disorderImageBase64
+                  disorderImage {
+                    sourceUrl
+                  }
+                }
+              }
             }
           }
         }
-      }
+      `,
+      }),
     }
-  }
-`;
+  )
+    .then((res) => res.json())
+    .then((result) => result);
+  console.log(data);
+  return data;
+}
 
 const Treatments = () => {
-  const disorders = data.nfcptSettings.nfcptSettings.disorders;
-
+  // const disorders = useLoaderData().data?.nfcptSettings.nfcptSettings.disorders;
+  // console.log("LOADER: ", useLoaderData());
   return (
-    <div className={styles.treatmentsWrap}>
+    <div className="treatmentsWrap">
       <div className="container">
-        <h2 className={styles.h2}>Injuries & Conditions We Treat</h2>
-        <Swiper
+        <h2 className="h2">Injuries & Conditions We Treat</h2>
+        {/* <Swiper
           speed={750}
           spaceBetween={0}
           slidesPerView={4}
@@ -90,12 +104,7 @@ const Treatments = () => {
                       height: "200px",
                     }}
                   >
-                    <Image
-                      layout="fill"
-                      objectFit="cover"
-                      objectPosition="center"
-                      placeholder="blur"
-                      blurDataURL={disorder.disorder.disorderImageBase64}
+                    <img
                       src={disorder.disorder.disorderImage.sourceUrl}
                       alt={disorder.disorder.disorderName}
                     />
@@ -104,7 +113,7 @@ const Treatments = () => {
               </SwiperSlide>
             );
           })}
-        </Swiper>
+        </Swiper> */}
       </div>
     </div>
   );
