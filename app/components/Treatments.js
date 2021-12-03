@@ -10,44 +10,8 @@ import styles from "~/styles/treatments.css";
 // import Swiper core and required modules
 // import SwiperCore, { Autoplay, Pagination } from "swiper";
 
-export function loader() {
-  const data = fetch(
-    "https://old.northfloridachiropracticphysicaltherapy.com/graphql",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        query: `
-        query GetDisorders {
-          nfcptSettings {
-            nfcptSettings {
-              disorders {
-                disorder {
-                  disorderName
-                  disorderImageBase64
-                  disorderImage {
-                    sourceUrl
-                  }
-                }
-              }
-            }
-          }
-        }
-      `,
-      }),
-    }
-  )
-    .then((res) => res.json())
-    .then((result) => result);
-  console.log(data);
-  return data;
-}
-
-const Treatments = () => {
-  // const disorders = useLoaderData().data?.nfcptSettings.nfcptSettings.disorders;
-  // console.log("LOADER: ", useLoaderData());
+const Treatments = ({ footerData }) => {
+  console.log("footer data: ", footerData);
   return (
     <div className="treatmentsWrap">
       <div className="container">

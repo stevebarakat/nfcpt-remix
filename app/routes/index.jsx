@@ -28,6 +28,19 @@ export function loader() {
       body: JSON.stringify({
         query: `
         query GetHomepage {
+          nfcptSettings {
+            nfcptSettings {
+              disorders {
+                disorder {
+                  disorderName
+                  disorderImageBase64
+                  disorderImage {
+                    sourceUrl
+                  }
+                }
+              }
+            }
+          }
           pageBy(uri: "homepage") {
             title
             featuredImage {
@@ -55,14 +68,14 @@ export function loader() {
 }
 
 export default function Index() {
-  let homepageData = useLoaderData().data.pageBy;
+  const data = useLoaderData().data;
   return (
     <>
-      <Hero homepageData={homepageData} />
+      <Hero homepageData={data.pageBy} />
       <Cta />
       <Mission />
-      <Treatments />
-      <Blocks />
+      <Treatments footerData={data.nfcptSettings.nfcptSettings} />
+      {/* <Blocks /> */}
     </>
   );
 }
