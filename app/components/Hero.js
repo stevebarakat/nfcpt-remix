@@ -12,7 +12,6 @@ const Hero = ({ homepageData }) => {
         background: `url(${homepageData?.featuredImage?.node.sourceUrl}) no-repeat`,
         backgroundPosition: "center",
         backgroundSize: "cover",
-        backgroundAttachment: "fixed",
       }}
     >
       <div className="hero">
