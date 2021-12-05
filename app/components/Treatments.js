@@ -7,7 +7,6 @@ import { useLoaderData } from "remix";
 // import "swiper/css/pagination";
 
 const Treatments = ({ footerData }) => {
-  console.log("footer data: ", footerData);
   return (
     <div className="treatmentsWrap">
       <div className="container">

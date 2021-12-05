@@ -107,7 +107,6 @@ export function loader() {
 export default function App() {
   const data = useLoaderData().data;
   const menuItems = data.menuItems.nodes;
-  console.log(menuItems);
 
   return (
     <Document>

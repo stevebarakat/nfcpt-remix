@@ -2,7 +2,7 @@ import { useLoaderData, Link } from "remix";
 import Hero from "../components/Hero";
 import Cta from "../components/Cta";
 import Mission from "../components/Mission";
-import Treatments from "../components/Treatments";
+// import Treatments from "../components/Treatments";
 import Blocks from "../components/Blocks";
 import styles from "../styles/index.css";
 
@@ -74,7 +74,7 @@ export default function Index() {
       <Hero homepageData={data.pageBy} />
       <Cta />
       <Mission />
-      <Treatments footerData={data.nfcptSettings.nfcptSettings} />
+      {/* <Treatments footerData={data.nfcptSettings.nfcptSettings} /> */}
       <Blocks />
     </>
   );

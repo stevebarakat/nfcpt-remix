@@ -5,7 +5,6 @@ export function links() {
 }
 
 const Hero = ({ homepageData }) => {
-  console.log("homepageData: ", homepageData);
   return (
     <section
       style={{
