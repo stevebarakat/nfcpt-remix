@@ -76,13 +76,21 @@
 }
 
 .ctaLeftWrap {
+  display: flex;
+  flex-wrap: wrap;
   max-width: 675px;
   width: 100%;
-  justify-self: center;
-  align-self: center;
-  padding: 2rem 1rem;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem clamp(1rem, 7vmin, 4rem);
 }
+
+.ctaLeftWrap svg {
+  max-height: 75px;
+}
+
 .ctaRightWrap {
+  display: flex;
   padding: 2rem 1rem;
   border-left: none;
   border-top: 4px solid white;
@@ -91,13 +99,15 @@
 }
 
 .ctaRightWrap > div {
-  max-width: 30ch;
+  max-width: 675px;
   margin: 0 auto;
   padding: 2rem 1rem;
+  align-self: center;
+  justify-self: center;
 }
 
 .ctaHeader {
-  font-size: 1.75rem;
+  font-size: clamp(2rem, 6vmin, 6rem);
   font-weight: 800;
   letter-spacing: -0.1rem;
   line-height: 1;
@@ -112,6 +122,16 @@
   letter-spacing: -0.05rem;
   text-transform: uppercase;
   font-weight: 400;
+}
+.ninety,
+.special {
+  padding: 1rem;
+  display: inline-block;
+}
+
+.ninety {
+  position: relative;
+  right: 5%;
 }
 
 @media (min-width: 700px) {
@@ -366,6 +386,9 @@
   max-width: 100%;
   text-align: center;
   color: white;
+  background: url("https://res.cloudinary.com/stevebarakat/image/upload/v1637754771/ray.jpg")
+    center no-repeat;
+  background-size: cover;
 }
 .block2 {
   display: none;
@@ -386,6 +409,9 @@
   max-width: 100%;
   text-align: center;
   color: white;
+  background: url("https://res.cloudinary.com/stevebarakat/image/upload/v1637754771/trio.jpg")
+    center no-repeat;
+  background-size: cover;
 }
 .headline p,
 .blockquote p {

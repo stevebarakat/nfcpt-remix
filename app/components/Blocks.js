@@ -2,19 +2,21 @@ import { Link } from "remix";
 import Button from "./Button";
 import ray from "~/images/ray.webp";
 import trio from "~/images/trio.webp";
-import styles from "~/styles/blocks.css";
 
 const Blocks = () => {
   return (
     <>
-      <div className={styles.wrapper}>
+      <div className="wrapper">
         {/* BLOCK 1 */}
-        <div className={styles.block1}>
-          <div className={styles.brightness}>
-            <img src={ray} alt="Alex Ray" />
+        <div className="block1">
+          <div className="brightness">
+            {/* <img
+              src="https://res.cloudinary.com/stevebarakat/image/upload/v1637754771/ray.jpg"
+              alt="Alex Ray"
+            /> */}
           </div>
           <figure>
-            <blockquote className={styles.blockquote}>
+            <blockquote className="blockquote">
               <p>
                 Keeping my body aligned and free of pain with regular
                 chiropractic care is essential.
@@ -25,10 +27,10 @@ const Blocks = () => {
         </div>
 
         {/* BLOCK 2 */}
-        <div className={styles.contain}>
-          <div className={styles.block2}>
-            <figure className={styles.figure}>
-              <blockquote className={styles.blockquote}>
+        <div className="contain">
+          <div className="block2">
+            <figure className="figure">
+              <blockquote className="blockquote">
                 <p>
                   Keeping my body aligned and free of pain with regular
                   chiropractic care is essential.
@@ -43,15 +45,15 @@ const Blocks = () => {
       {/* BLOCK 3 */}
       <div
         style={{ background: "var(--accentGradient)", color: "white" }}
-        className={styles.wrapper}
+        className="wrapper"
       >
-        <div className={styles.contain} style={{ justifySelf: "flex-end" }}>
-          <div className={styles.block3}>
-            <div className={styles.figure}>
-              <div className={styles.headline}>
+        <div className="contain" style={{ justifySelf: "flex-end" }}>
+          <div className="block3">
+            <div className="figure">
+              <div className="headline">
                 <p>Join The Club!</p>
               </div>
-              <p className={styles.description}>
+              <p className="description">
                 The best way to keep your spine healthy is by taking care of it.
                 We offer package deals on regular chiropractic treatments and
                 massage therapy to club members.
@@ -70,9 +72,9 @@ const Blocks = () => {
         </div>
 
         {/* BLOCK 4 */}
-        <div className={styles.block4}>
+        <div className="block4">
           <div className="brightness">
-            <img src={trio} alt="three female friends" />
+            {/* <img src={trio} alt="three female friends" /> */}
           </div>
         </div>
       </div>

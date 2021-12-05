@@ -1,14 +1,10 @@
 import React from "react";
 import { useLoaderData } from "remix";
-import styles from "~/styles/treatments.css";
 // import { Swiper, SwiperSlide } from "swiper/react";
+// import SwiperCore, { Autoplay, Pagination } from "swiper";
 
-// Import Swiper styles
 // import "swiper/css";
 // import "swiper/css/pagination";
-
-// import Swiper core and required modules
-// import SwiperCore, { Autoplay, Pagination } from "swiper";
 
 const Treatments = ({ footerData }) => {
   console.log("footer data: ", footerData);

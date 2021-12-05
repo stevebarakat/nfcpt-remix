@@ -75,7 +75,7 @@ export default function Index() {
       <Cta />
       <Mission />
       <Treatments footerData={data.nfcptSettings.nfcptSettings} />
-      {/* <Blocks /> */}
+      <Blocks />
     </>
   );
 }
