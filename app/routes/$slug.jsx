@@ -46,15 +46,18 @@ async function gqlFetch(query, variables) {
   return response.json();
 }
 
-export async function loader() {
+export async function loader({ params }) {
+  let url = params.slug;
   const slug = await gqlFetch(SlugQuery);
-  const page = await gqlFetch(PageQuery, { slug: slug.pages.nodes[0].uri });
-  return page.pageBy;
+  const pageData = await gqlFetch(PageQuery, {
+    slug: slug.data.pages.nodes.find((node) => node.uri === url),
+  });
+  return pageData;
 }
 
-export default function Slug() {
-  const data = useLoaderData().data;
-  console.log(data.pageBy.title);
+export default function Page() {
+  const data = useLoaderData();
+  console.log(data.pageBy);
   return (
     <div className="page">
       <main>
