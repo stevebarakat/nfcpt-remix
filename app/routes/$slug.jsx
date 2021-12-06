@@ -1,5 +1,12 @@
 import { useLoaderData } from "remix";
 
+export let meta = () => {
+  return {
+    title: "North Florida Chiropractic Physical ",
+    description: "Car Accident Chiropractor",
+  };
+};
+
 const SlugQuery = /* GraphQL */ `
   query GetWordPressPages {
     pages {
