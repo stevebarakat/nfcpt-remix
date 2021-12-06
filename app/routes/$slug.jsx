@@ -4,7 +4,7 @@ const SlugQuery = /* GraphQL */ `
   query GetWordPressPages {
     pages {
       nodes {
-        slug
+        uri
       }
     }
   }
@@ -12,7 +12,7 @@ const SlugQuery = /* GraphQL */ `
 
 const PageQuery = /* GraphQL */ `
   query GetWordPressPagesBySlug($slug: String!) {
-    pageBy(slug: $slug) {
+    pageBy(uri: $slug) {
       title
       content
       seo {
@@ -48,11 +48,30 @@ async function gqlFetch(query, variables) {
 
 export async function loader({ params }) {
   let url = params.slug;
+
   const slug = await gqlFetch(SlugQuery);
+  const res = slug.data.pages.nodes.find((node) => node.uri === `/${url}/`);
+
+  if (!res || !res.uri) {
+    throw new Response("could not find page", {
+      headers: {
+        status: 404,
+      },
+    });
+  }
+
   const pageData = await gqlFetch(PageQuery, {
-    slug: slug.data.pages.nodes.find((node) => node.slug === url),
+    slug: `${res.uri}`,
   });
-  return pageData;
+  if (!pageData || !pageData.data) {
+    throw new Response("could not find page", {
+      headers: {
+        status: 404,
+      },
+    });
+  }
+
+  return pageData.data;
 }
 
 export default function Page() {
@@ -60,6 +79,21 @@ export default function Page() {
   console.log(data.pageBy);
   return (
     <div className="page">
+      <div className="mastheadWrap">
+        <img
+          src={data.pageBy.featuredImage.node.sourceUrl}
+          alt={data.pageBy.featuredImage.node.altText}
+        />
+        <div className={"heading container"}>
+          <span className="h1">{data.pageBy.featuredImage.node.title}</span>
+          <div
+            className="description"
+            dangerouslySetInnerHTML={{
+              __html: data.pageBy.featuredImage.node.caption,
+            }}
+          ></div>
+        </div>
+      </div>
       <main>
         <div className="container">
           <div className="pageWrap">
