@@ -5,11 +5,6 @@ import Hamburger from "hamburger-react";
 import { FaCaretDown } from "react-icons/fa";
 import logo from "../images/logo.svg";
 import mobileLogo from "../images/mobile-logo.svg";
-// import styles from "./header.css";
-
-// export function links() {
-//   return [{ rel: "stylesheet", href: styles }];
-// }
 
 const Menu = ({ item, handleSetMobileOpen }) => {
   const ref = useRef();

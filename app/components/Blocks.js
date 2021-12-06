@@ -9,12 +9,6 @@ const Blocks = () => {
       <div className="wrapper">
         {/* BLOCK 1 */}
         <div className="block1">
-          <div className="brightness">
-            {/* <img
-              src="https://res.cloudinary.com/stevebarakat/image/upload/v1637754771/ray.jpg"
-              alt="Alex Ray"
-            /> */}
-          </div>
           <figure>
             <blockquote className="blockquote">
               <p>
@@ -72,11 +66,7 @@ const Blocks = () => {
         </div>
 
         {/* BLOCK 4 */}
-        <div className="block4">
-          <div className="brightness">
-            {/* <img src={trio} alt="three female friends" /> */}
-          </div>
-        </div>
+        <div className="block4"></div>
       </div>
     </>
   );

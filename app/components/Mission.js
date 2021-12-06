@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import CountUp from "react-countup";
 import useOnScreen from "~/hooks/useOnScreen";
-import styles from "~/styles/mission.css";
 
 export function links() {
   return [{ rel: "stylesheet", href: styles }];

@@ -79,11 +79,13 @@ export default function Page() {
   console.log(data.pageBy);
   return (
     <div className="page">
-      <div className="mastheadWrap">
-        <img
-          src={data.pageBy.featuredImage.node.sourceUrl}
-          alt={data.pageBy.featuredImage.node.altText}
-        />
+      <div
+        style={{
+          background: `url(${data.pageBy.featuredImage.node.sourceUrl}) center no-repeat`,
+          backgroundSize: "cover",
+        }}
+        className="mastheadWrap"
+      >
         <div className={"heading container"}>
           <span className="h1">{data.pageBy.featuredImage.node.title}</span>
           <div
