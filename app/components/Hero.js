@@ -1,19 +1,27 @@
-import styles from "./hero.css";
+import { buildUrl } from "cloudinary-build-url";
 
-export function links() {
-  return [{ rel: "stylesheet", href: styles }];
-}
+// const urlPixelated = buildUrl(page.featuredImage.node.slug, {
+//   cloud: {
+//     cloudName: "stevebarakat",
+//   },
+//   transformations: {
+//     effect: {
+//       name: "pixelate",
+//     },
+//   },
+// });
 
 const Hero = ({ homepageData }) => {
   return (
     <section
-      style={{
-        background: `url(${homepageData?.featuredImage?.node.sourceUrl}) no-repeat`,
-        backgroundPosition: "center",
-        backgroundSize: "cover",
-      }}
+    // style={{
+    //   background: `url(${homepageData?.featuredImage?.node.sourceUrl}) no-repeat`,
+    //   backgroundPosition: "center",
+    //   backgroundSize: "cover",
+    // }}
     >
       <div className="hero">
+        <img src={homepageData?.featuredImage?.node.sourceUrl} />
         <div className="heroContainer">
           <span className="headline">
             {homepageData?.featuredImage?.node.title}

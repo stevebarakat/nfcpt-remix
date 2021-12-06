@@ -1,7 +1,6 @@
 /* HERO UNIT */
 
 .hero {
-  /* min-height: 750px; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -9,6 +8,13 @@
   justify-content: center;
   position: relative;
   margin-bottom: -6.5rem;
+}
+
+.hero img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .heroContainer {
