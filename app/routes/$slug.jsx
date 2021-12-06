@@ -4,7 +4,7 @@ const SlugQuery = /* GraphQL */ `
   query GetWordPressPages {
     pages {
       nodes {
-        uri
+        slug
       }
     }
   }
@@ -12,7 +12,7 @@ const SlugQuery = /* GraphQL */ `
 
 const PageQuery = /* GraphQL */ `
   query GetWordPressPagesBySlug($slug: String!) {
-    pageBy(uri: $slug) {
+    pageBy(slug: $slug) {
       title
       content
       seo {
@@ -50,7 +50,7 @@ export async function loader({ params }) {
   let url = params.slug;
   const slug = await gqlFetch(SlugQuery);
   const pageData = await gqlFetch(PageQuery, {
-    slug: slug.data.pages.nodes.find((node) => node.uri === url),
+    slug: slug.data.pages.nodes.find((node) => node.slug === url),
   });
   return pageData;
 }
