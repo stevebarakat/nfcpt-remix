@@ -1,60 +1,55 @@
-import { useLoaderData, Link } from "remix";
-import Hero from "../components/Hero";
-import Cta from "../components/Cta";
-import Mission from "../components/Mission";
-// import Treatments from "../components/Treatments";
-import Blocks from "../components/Blocks";
-import styles from "../styles/index.css";
+import { useLoaderData } from "remix";
 
-export let meta = () => {
-  return {
-    title: "North Florida Chiropractic Physical ",
-    description: "Car Accident Chiropractor",
-  };
-};
+const SlugQuery = /* GraphQL */ `
+  query GetWordPressPages {
+    pages {
+      nodes {
+        uri
+      }
+    }
+  }
+`;
 
-export function links() {
-  return [{ rel: "stylesheet", href: styles }];
-}
+const PageQuery = /* GraphQL */ `
+  query GetWordPressPagesBySlug($slug: String!) {
+    pageBy(uri: $slug) {
+      title
+      content
+      seo {
+        title
+        metaDesc
+      }
+      featuredImage {
+        node {
+          slug
+          title
+          caption
+          sourceUrl
+          altText
+        }
+      }
+    }
+  }
+`;
 
-export function loader() {
-  const slug = "first-visit";
-  const data = fetch(
+async function gqlFetch(query, variables) {
+  const response = await fetch(
     "https://old.northfloridachiropracticphysicaltherapy.com/graphql",
     {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        query: `
-        query GetWordPressPagesBySlug($slug: String!) {
-          pageBy(uri: $slug) {
-            title
-            content
-            seo {
-              title
-              metaDesc
-            }
-            featuredImage {
-              node {
-                slug
-                title
-                caption
-                sourceUrl
-                altText
-              }
-            }
-          }
-        }
-      `,
-        variables: { slug },
-      }),
+      body: JSON.stringify({ query, variables }),
     }
-  )
-    .then((res) => res.json())
-    .then((result) => result);
-  return data;
+  );
+  return response.json();
+}
+
+export async function loader() {
+  const slug = await gqlFetch(SlugQuery);
+  const page = await gqlFetch(PageQuery, { slug: slug.pages.nodes[0].uri });
+  return page.pageBy;
 }
 
 export default function Slug() {
@@ -62,21 +57,6 @@ export default function Slug() {
   console.log(data.pageBy.title);
   return (
     <div className="page">
-      <div className="mastheadWrap">
-        <img
-          src={data.pageBy.featuredImage.node.sourceUrl}
-          alt={data.pageBy.featuredImage.node.altText}
-        />
-        <div className={"heading container"}>
-          <span className="h1">{data.pageBy.featuredImage.node.title}</span>
-          <div
-            className="description"
-            dangerouslySetInnerHTML={{
-              __html: data.pageBy.featuredImage.node.caption,
-            }}
-          ></div>
-        </div>
-      </div>
       <main>
         <div className="container">
           <div className="pageWrap">
