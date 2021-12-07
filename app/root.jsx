@@ -31,6 +31,12 @@ export const links = () => {
   ];
 };
 
+export function headers({ loaderHeaders, parentHeaders }) {
+  return {
+    "Cache-Control": "max-age=604800",
+  };
+}
+
 export function loader() {
   const data = fetch(
     "https://old.northfloridachiropracticphysicaltherapy.com/graphql",
