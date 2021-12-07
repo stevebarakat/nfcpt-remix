@@ -32,12 +32,11 @@ export const links = () => {
   ];
 };
 
-return json(data, {
-  headers: {
-    "Cache-Control": "max-age=604800",
-  },
-});
-
+export function headers({ loaderHeaders }) {
+  return {
+    "Cache-Control": "max-age=300, s-maxage=3600",
+  };
+}
 export function loader() {
   const data = fetch(
     "https://old.northfloridachiropracticphysicaltherapy.com/graphql",
