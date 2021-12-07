@@ -7,6 +7,12 @@ export let meta = () => {
   };
 };
 
+export function headers({ loaderHeaders, parentHeaders }) {
+  return {
+    "Cache-Control": "....",
+  };
+}
+
 const SlugQuery = /* GraphQL */ `
   query GetWordPressPages {
     pages {

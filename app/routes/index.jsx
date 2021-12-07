@@ -17,6 +17,12 @@ export function links() {
   return [{ rel: "stylesheet", href: styles }];
 }
 
+export function headers({ loaderHeaders, parentHeaders }) {
+  return {
+    "Cache-Control": "....",
+  };
+}
+
 export function loader() {
   const data = fetch(
     "https://old.northfloridachiropracticphysicaltherapy.com/graphql",
