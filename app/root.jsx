@@ -7,6 +7,7 @@ import {
   Scripts,
   ScrollRestoration,
   useCatch,
+  json,
 } from "remix";
 
 import Layout from "./components/Layout";
@@ -31,11 +32,11 @@ export const links = () => {
   ];
 };
 
-export function headers({ loaderHeaders, parentHeaders }) {
-  return {
+return json(data, {
+  headers: {
     "Cache-Control": "max-age=604800",
-  };
-}
+  },
+});
 
 export function loader() {
   const data = fetch(
