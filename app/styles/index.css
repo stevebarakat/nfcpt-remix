@@ -366,6 +366,21 @@
   padding: 6rem 0;
 }
 
+.disordersWrap {
+  width: 700px;
+  height: 700px;
+  margin: 0 auto;
+  display: grid;
+  place-content: center;
+  border: 10px solid var(--accentColor);
+  border-radius: 50%;
+}
+
+img[alt="disorders"] {
+  width: 230px;
+  padding: 1rem;
+}
+
 /* BLOCKS */
 
 .wrapper {
