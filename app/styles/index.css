@@ -320,38 +320,6 @@
 
 /* TREATMENTS */
 
-.card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  margin: 3rem auto;
-  color: white;
-  gap: 1rem;
-  width: fit-content;
-}
-
-.card img {
-  border-radius: 8px;
-  aspect-ratio: 1/1;
-}
-
-.cardHeader {
-  position: absolute;
-  font-size: 1rem;
-  font-weight: 800;
-  letter-spacing: -0.05rem;
-  z-index: 9;
-  bottom: 0;
-  background: hsla(324, 79%, 68%, 0.75);
-  width: 100%;
-  height: fit-content;
-  padding: 0.5rem;
-  border-radius: 0 0 8px 8px;
-}
-
 .h2 {
   font-size: 3.25rem;
   margin: 0 auto;
@@ -361,24 +329,115 @@
   padding-bottom: 2rem;
 }
 
-.treatmentsWrap {
-  background: var(--primaryGradient);
-  padding: 6rem 0;
+.infographic {
+  background: red;
+  display: flex;
+  max-width: 100%;
 }
 
-.disordersWrap {
-  width: 700px;
-  height: 700px;
-  margin: 0 auto;
+.items-left,
+.items-right {
+  position: relative;
+}
+
+.items-left {
+  left: 60px;
+}
+
+.items-right {
+  left: -60px;
+  width: 500px;
+}
+
+.items-right a {
+  margin-left: 0.5rem;
+}
+
+.item-left,
+.item-right {
+  z-index: 20;
+  display: flex;
+  position: relative;
+  white-space: nowrap;
+}
+
+.item-right {
+  flex-direction: flex-start;
+  margin-top: -1rem;
+}
+
+.item-left {
+  justify-content: flex-end;
+}
+
+.line-left {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+  background: white;
+  width: 150px;
+  height: 2px;
+  transform: rotate(35deg);
+  transform-origin: left;
+}
+.line-left::after {
+  content: "";
+  display: flex;
+  justify-content: flex-end;
+  width: 15px;
+  height: 15px;
+  margin-top: -7px;
+  border-radius: 50%;
+  background: white;
+}
+.line-right {
+  display: flex;
+  margin-top: 0.4rem;
+  background: white;
+  width: 150px;
+  height: 2px;
+  transform: rotate(35deg);
+  transform-origin: right;
+}
+.line-right::after {
+  content: "";
+  display: flex;
+  justify-content: flex-end;
+  width: 15px;
+  height: 15px;
+  margin-top: -7px;
+  border-radius: 50%;
+  background: white;
+}
+.disordersWrap div {
+  grid-row: 1 / span 4;
+  min-height: 25%;
+}
+
+.disordersWrap div div {
+  width: 150px;
+  height: 150px;
+  aspect-ratio: 1/1;
   display: grid;
   place-content: center;
-  border: 10px solid var(--accentColor);
+  background: var(--accentGradient);
+  border: 1px solid yellow;
   border-radius: 50%;
+  position: relative;
+}
+
+.bubbleRight {
+  left: 100px;
+}
+
+.bubbleLeft {
+  right: 100px;
 }
 
 img[alt="disorders"] {
-  width: 230px;
-  padding: 1rem;
+  grid-column: 1 / span 4;
+  height: 100%;
 }
 
 /* BLOCKS */
