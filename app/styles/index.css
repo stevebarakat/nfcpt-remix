@@ -280,7 +280,7 @@
   .mission {
     grid-template-columns: repeat(2, 1fr);
   }
-  .missionHeader {
+  .missionHeader h1 {
     font-size: 2.25rem;
     text-align: left;
   }
@@ -321,7 +321,18 @@
 /* TREATMENTS */
 
 .infographic {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 850px;
+  max-width: 100%;
+  border: 1px solid black;
+  position: relative;
+  z-index: 10;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.infographic img {
   max-width: 100%;
 }
 
@@ -331,12 +342,12 @@
 }
 
 .items-left {
-  left: 60px;
+  /* left: -100px; */
 }
 
 .items-right {
-  left: -60px;
-  width: 500px;
+  /* left: 330px; */
+  /* width: 500px; */
 }
 
 .items-right a {
@@ -348,12 +359,11 @@
   z-index: 20;
   display: flex;
   position: relative;
-  white-space: nowrap;
+  /* white-space: nowrap; */
 }
 
 .item-right {
-  flex-direction: flex-start;
-  margin-top: -1rem;
+  /* margin-top: -1rem; */
 }
 
 .item-left {
@@ -366,30 +376,24 @@
   margin-top: 0.5rem;
   margin-left: 0.5rem;
   background: white;
-  width: 150px;
+  width: 100%;
+  max-width: 100%;
   height: 2px;
   transform: rotate(35deg);
   transform-origin: left;
 }
-.line-left::after {
-  content: "";
-  display: flex;
-  justify-content: flex-end;
-  width: 15px;
-  height: 15px;
-  margin-top: -7px;
-  border-radius: 50%;
-  background: white;
-}
+
 .line-right {
   display: flex;
   margin-top: 0.4rem;
   background: white;
-  width: 150px;
+  width: 100%;
+  max-width: 100%;
   height: 2px;
   transform: rotate(35deg);
   transform-origin: right;
 }
+.line-left::after,
 .line-right::after {
   content: "";
   display: flex;
@@ -413,40 +417,6 @@
 .treatmentsWrap {
   background: var(--primaryGradient);
   padding: 6rem 0;
-}
-
-.disordersWrap {
-  display: grid;
-  grid-template-rows: repeat(4, 175px);
-  grid-template-columns: repeat(3, 223px);
-  gap: 1rem;
-  width: 700px;
-  height: 700px;
-  margin: 0 auto;
-  border: 10px solid var(--accentColor);
-  border-radius: 50%;
-}
-
-.disordersWrap div {
-  grid-row: 1 / span 4;
-  min-height: 25%;
-}
-
-.disordersWrap div div {
-  width: 150px;
-  height: 150px;
-  aspect-ratio: 1/1;
-  display: grid;
-  place-content: center;
-  background: var(--accentGradient);
-  border: 1px solid yellow;
-  border-radius: 50%;
-  position: relative;
-}
-
-img[alt="disorders"] {
-  grid-column: 1 / span 4;
-  height: 100%;
 }
 
 /* BLOCKS */
