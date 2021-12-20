@@ -33,7 +33,7 @@ const Treatments = ({ footerData }) => {
               ></div>
             </div>
             <div className="item-left" style={{ top: "60%" }}>
-              <a href="https://github.com/">Link to Github</a>
+              <a href="https://github.com/">Tendonitis</a>
               <div
                 className="line-left"
                 style={{ transform: "rotate(-15deg)" }}

@@ -321,18 +321,20 @@
 /* TREATMENTS */
 
 .infographic {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
+  /* grid-template-columns: 1fr 1fr 1fr; */
   width: 850px;
   max-width: 100%;
   position: relative;
   z-index: 10;
   justify-content: center;
   margin: 0 auto;
+  overflow-x: hidden;
 }
 
 .infographic img {
   max-width: 100%;
+  min-width: 50%;
 }
 
 .infographic a {
